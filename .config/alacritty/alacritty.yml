@@ -117,69 +117,34 @@ font:
     y: 1
   draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night)
+# Colors (Material Theme)
 colors:
   # Default colors
   primary:
-    background: "#1d1f21"
-    foreground: "#c5c8c6"
-  # Bright and dim foreground colors
-  #
-  # The dimmed foreground color is calculated automatically if it is not present.
-  # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-  # is `false`, the normal foreground color will be used.
-  dim_foreground: "#828482"
-  bright_foreground: "#eaeaea"
-
-  # Search colors
-  #
-  # Colors used for the search bar and match highlighting.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
-  search:
-    matches:
-      foreground: "#333333"
-      background: "#ffffff"
-    bar:
-      background: CellForeground
-      foreground: CellBackground
+    background: "#263238"
+    foreground: "#eeffff"
 
   # Normal colors
   normal:
-    black: "#1d1f21"
-    red: "#cc6666"
-    green: "#b5bd68"
-    yellow: "#f0c674"
-    blue: "#81a2be"
-    magenta: "#b294bb"
-    cyan: "#8abeb7"
-    white: "#c5c8c6"
+    black: "#333333" # Arbitrary
+    red: "#e53935"
+    green: "#91b859"
+    yellow: "#ffb62c"
+    blue: "#6182b8"
+    magenta: "#ff5370" # Dark pink of the original material theme
+    cyan: "#39adb5"
+    white: "#a0a0a0" # Arbitrary
 
   # Bright colors
   bright:
-    black: "#666666"
-    red: "#d54e53"
-    green: "#b9ca4a"
-    yellow: "#e7c547"
-    blue: "#7aa6da"
-    magenta: "#c397d8"
-    cyan: "#70c0b1"
-    white: "#eaeaea"
-
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  dim:
-    black: "#131415"
-    red: "#864343"
-    green: "#777c44"
-    yellow: "#9e824c"
-    blue: "#556a7d"
-    magenta: "#75617b"
-    cyan: "#5b7d78"
-    white: "#828482"
+    black: "#4e4e4e" # Arbitrary
+    red: "#ff5370"
+    green: "#c3e88d"
+    yellow: "#ffcb6b"
+    blue: "#82aaff"
+    magenta: "#f07178" # Pink of the original material theme
+    cyan: "#89ddff"
+    white: "#ffffff" # Arbitrary
 
 # Cursor style
 #
