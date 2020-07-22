@@ -1,2 +1,3 @@
 # dotfiles
-My enviroment dot files
+
+My environment `dotfiles` and configs.
