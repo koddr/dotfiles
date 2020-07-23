@@ -29,6 +29,3 @@ export EDITOR="code"
 # Golang
 export GOPATH="$HOME/.go"
 export PATH="$PATH:$GOPATH/bin"
-
-# Python
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
