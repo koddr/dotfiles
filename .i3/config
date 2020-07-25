@@ -32,7 +32,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun -font "JetBrains Mono 10"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec alacritty -e 'bmenu'
+bindsym $mod+F1 exec flameshot gui
 bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
@@ -149,6 +149,9 @@ for_window [class="Xfburn"] floating enable
 # Switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+# Move app to workspace
+for_window [class="Spotify"] move to workspace $ws4
+
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
@@ -201,6 +204,7 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
+exec --no-startup-id flameshot
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_space_toggle,compose:ralt
 
