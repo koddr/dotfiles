@@ -6,7 +6,7 @@ set $mod Mod4
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
-default_floating_border none
+default_floating_border pixel 1
 
 # Hide borders
 hide_edge_borders true
@@ -151,6 +151,7 @@ for_window [urgent=latest] focus
 
 # Move app to workspace
 for_window [class="Spotify"] move to workspace $ws4
+for_window [class="Mailspring"] move to workspace $ws4
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##

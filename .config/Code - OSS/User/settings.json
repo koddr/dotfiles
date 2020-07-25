@@ -5,7 +5,9 @@
   "editor.fontFamily": "JetBrains Mono, Hack, monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
-  "editor.rulers": [100],
+  "editor.rulers": [
+    110
+  ],
   "editor.renderWhitespace": "all",
   "editor.acceptSuggestionOnEnter": "off",
   "editor.renameOnType": true,
@@ -23,7 +25,8 @@
     "*.njk": "html",
     "*-domain.j*2": "NGINX",
     "**/tasks/*.y*ml": "ansible",
-    "*playbook.y*ml": "ansible"
+    "*playbook.y*ml": "ansible",
+    "config": "powershell"
   },
   "files.exclude": {
     "**/node_modules": true
@@ -38,6 +41,7 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "vscode-icons",
   "window.zoomLevel": 1,
+  "window.menuBarVisibility": "toggle",
   // Use ZSH as the integrated terminal
   "terminal.integrated.shell.osx": "zsh",
   "terminal.integrated.cursorStyle": "underline",
@@ -291,6 +295,5 @@
   "html.validate.styles": false,
   "html.validate.scripts": false,
   // Svelte
-  "svelte.plugin.css.diagnostics.enable": false,
-  "python.languageServer": "Microsoft"
+  "svelte.plugin.css.diagnostics.enable": false
 }
