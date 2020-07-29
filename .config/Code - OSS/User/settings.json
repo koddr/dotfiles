@@ -26,7 +26,8 @@
     "*-domain.j*2": "NGINX",
     "**/tasks/*.y*ml": "ansible",
     "*playbook.y*ml": "ansible",
-    "config": "powershell"
+    "config": "powershell",
+    "*.conf": "powershell"
   },
   "files.exclude": {
     "**/node_modules": true
