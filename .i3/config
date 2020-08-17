@@ -207,7 +207,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id flameshot
 exec --no-startup-id xautolock -time 10 -locker blurlock
-exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_space_toggle,compose:ralt
+exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:caps_toggle,caps_led:caps,compose:ralt
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
@@ -247,12 +247,12 @@ gaps outer -2
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps inverse_outer
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. 
-# Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). 
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
+# Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
 # If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
