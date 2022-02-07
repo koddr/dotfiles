@@ -2,8 +2,22 @@
 
 My environment `dotfiles`, configs & bash scripts.
 
-> Tested *only* on Fedora Workstation 35.
+> Tested on Fedora Workstation 35.
 
-1. Post install script `sudo ./post-install.sh` (run *only* as sudo user);
-2. Install needed VS Code extensions `./vscode-extensions.sh` (run as normal user);
-3. Install needed Google Fonts `./google-fonts.sh` (run as normal user);
+Post install script (run *only* as sudo user):
+
+```bash
+sudo ./post-install.sh
+```
+
+Install needed VS Code extensions (run as normal user):
+
+```bash
+./vscode-extensions.sh
+```
+
+Install needed Google Fonts (run as normal user):
+
+```bash
+./google-fonts.sh
+```
