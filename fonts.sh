@@ -15,6 +15,8 @@ echo "$MIDDLE Download & unzip needed Google Fonts"
 echo $FOOTER
 
 declare -a FONTS=(
+    "Source+Code+Pro" \
+    "JetBrains+Mono" \
     "Fira+Code" \
     "Open+Sans" \
     "PT+Serif" \
@@ -26,7 +28,7 @@ declare -a FONTS=(
 
 for FONT in ${FONTS[@]}
 do
-    ZIP_NAME="${FONT/+/_}"
+    ZIP_NAME="${FONT//+/_}"
 
     rm -rf $HOME/.fonts/$ZIP_NAME
     curl -L -o /tmp/$ZIP_NAME.zip https://fonts.google.com/download?family=$FONT
