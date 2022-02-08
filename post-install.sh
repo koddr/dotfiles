@@ -26,6 +26,7 @@ echo "$MIDDLE Install zsh & Oh My Zsh"
 echo $FOOTER
 
 dnf install -y zsh
+echo "\n# Start Z Shell session\nzsh" >> $HOME/.bashrc
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 echo $HEADER
