@@ -16,8 +16,8 @@ Install needed VS Code extensions (run as normal user):
 ./vscode-extensions.sh
 ```
 
-Install needed Google Fonts (run as normal user):
+Install needed [Google](https://github.com/google/fonts) & [Liberation](https://github.com/liberationfonts/liberation-fonts) fonts (run as normal user):
 
 ```bash
-./google-fonts.sh
+./fonts.sh
 ```
