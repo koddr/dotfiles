@@ -84,7 +84,7 @@
 
   environment.systemPackages = with pkgs; [
     git
-    zsh
+    fish
     wget
     htop
     dwm
@@ -104,7 +104,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     home = "/home/koddr";
-    shell = "/run/current-system/sw/bin/zsh";
   };
 
   #
@@ -137,19 +136,14 @@
       git = {
         enable = true;
         userName = "koddr";
-        userEmail = "${GIT_EMAIL}";
+        userEmail = "${GIT_EMAIL}"; # don't forget to set email here
       };
-      # Z Shell:
-      zsh = {
+      # Fish shell:
+      fizsh = {
         enable = true;
         shellAliases = {
           ll = "ls -la";
           rebuild = "sudo nixos-rebuild switch";
-        };
-        oh-my-zsh = {
-          enable = true;
-          plugins = [ "git" ];
-          theme = "robbyrussell";
         };
       };
     };
