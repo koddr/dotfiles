@@ -85,19 +85,6 @@
   ];
 
   #
-  # User account:
-  #
-
-  users.users.koddr = { # don't forget to set a password with 'passwd %username%' after boot
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-    shell = "/run/current-system/sw/bin/zsh";
-  };
-
-  #
   # List packages installed in system profile:
   #
 
@@ -146,6 +133,20 @@
     pkgs.gyre-fonts
     pkgs.unifont
   ];
+
+  #
+  # User account:
+  #
+
+  users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+    home = "/home/koddr";
+    shell = "/run/current-system/sw/bin/zsh";
+  };
 
   #
   # NixOS version.
