@@ -89,33 +89,74 @@
   #
 
   environment.systemPackages = with pkgs; [
-    zsh wget git
-    dwm dmenu st
+    git
+    zsh
+    wget
+    dwm
+    dmenu
     alacritty
     chromium
     vscodium
+    tdesktop
     mpv
   ];
 
   #
-  # Programs configs:
+  # User account:
   #
 
-  programs = {
-    zsh = { # zsh
-      enable = true;
-      shellAliases = {
-        ll = "ls -la";
-        rebuild = "sudo nixos-rebuild switch";
-      };
-      history = {
-        size = 10000;
-        path = "${config.xdg.dataHome}/zsh/history";
-      };
-      oh-my-zsh = { # oh-my-zsh
+  users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+    home = "/home/koddr";
+    shell = "/run/current-system/sw/bin/zsh";
+  };
+
+  #
+  # Home manager config:
+  #
+
+  home-manager.users.koddr.useGlobalPkgs = true;
+  home-manager.users.koddr = { pkgs, ... }: {
+    #
+    # List of the home packages:
+    #
+
+    home.packages = [
+      pkgs.htop
+    ];
+
+    #
+    # Programs configs:
+    #
+
+    programs = {
+      home-manager = {
         enable = true;
-        plugins = [ "git" ];
-        theme = "robbyrussell";
+      };
+      git = {
+        enable = true;
+        userName = "koddr";
+        userEmail = "EMAIL";
+      };
+      zsh = {
+        enable = true;
+        shellAliases = {
+          ll = "ls -la";
+          rebuild = "sudo nixos-rebuild switch";
+        };
+        history = {
+          size = 10000;
+          path = "${config.xdg.dataHome}/zsh/history";
+        };
+        oh-my-zsh = {
+          enable = true;
+          plugins = [ "git" ];
+          theme = "robbyrussell";
+        };
       };
     };
   };
@@ -133,20 +174,6 @@
     pkgs.gyre-fonts
     pkgs.unifont
   ];
-
-  #
-  # User account:
-  #
-
-  users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-    home = "/home/koddr";
-    shell = "/run/current-system/sw/bin/zsh";
-  };
 
   #
   # NixOS version.
