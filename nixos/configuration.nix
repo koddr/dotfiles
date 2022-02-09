@@ -9,18 +9,12 @@
   # Boot config:
   #
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
-
-  # Load correct AMD GPU driver.
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.loader.grub.enable = true; # use GRUB boot loader
+  boot.loader.grub.version = 2; # set GRUB version to 2
+  boot.loader.grub.efiSupport = true; # enable EFI
+  boot.loader.grub.device = "nodev"; # or "/dev/sda" for non-EFI install only
+  boot.loader.efi.efiSysMountPoint = "/boot/efi"; # set folder to EFI
+  boot.initrd.kernelModules = [ "amdgpu" ]; # load correct AMD GPU driver
 
   #
   # Time zone config:
@@ -92,6 +86,7 @@
     git
     zsh
     wget
+    htop
     dwm
     dmenu
     alacritty
@@ -107,10 +102,7 @@
 
   users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
     isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
+    extraGroups = [ "wheel" "networkmanager" ];
     home = "/home/koddr";
     shell = "/run/current-system/sw/bin/zsh";
   };
@@ -119,38 +111,40 @@
   # Home manager config:
   #
 
-  home-manager.users.koddr.useGlobalPkgs = true;
   home-manager.users.koddr = { pkgs, ... }: {
+    #
+    # Options:
+    #
+
+    useGlobalPkgs = true;
+
     #
     # List of the home packages:
     #
 
-    home.packages = [
-      pkgs.htop
-    ];
+    home.packages = [ pkgs.go ];
 
     #
     # Programs configs:
     #
 
     programs = {
+      # Home manager itself:
       home-manager = {
         enable = true;
       };
+      # Git:
       git = {
         enable = true;
         userName = "koddr";
-        userEmail = "EMAIL";
+        userEmail = "${GIT_EMAIL}";
       };
+      # Z Shell:
       zsh = {
         enable = true;
         shellAliases = {
           ll = "ls -la";
           rebuild = "sudo nixos-rebuild switch";
-        };
-        history = {
-          size = 10000;
-          path = "${config.xdg.dataHome}/zsh/history";
         };
         oh-my-zsh = {
           enable = true;
