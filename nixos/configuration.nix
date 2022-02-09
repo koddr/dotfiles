@@ -9,12 +9,22 @@
   # Boot config:
   #
 
-  boot.loader.grub.enable = true; # use GRUB boot loader
-  boot.loader.grub.version = 2; # set GRUB version to 2
-  boot.loader.grub.efiSupport = true; # enable EFI
-  boot.loader.grub.device = "nodev"; # or "/dev/sda" for non-EFI install only
-  boot.loader.efi.efiSysMountPoint = "/boot/efi"; # set folder to EFI
-  boot.initrd.kernelModules = [ "amdgpu" ]; # load correct AMD GPU driver
+  boot = {
+    loader = {
+      grub = {
+        enable = true; # use GRUB boot loader
+        version = 2; # set GRUB version to 2
+        device = "nodev"; # or "/dev/sda" for non-EFI install only
+        efiSupport = true; # enable EFI
+      };
+      efi = {
+        efiSysMountPoint = "/boot/efi"; # set folder to EFI
+      };
+    };
+    initrd = {
+      kernelModules = [ "amdgpu" ]; # load correct AMD GPU driver
+    };
+  };
 
   #
   # Time zone config:
@@ -26,14 +36,12 @@
   # Networking config:
   #
 
-  networking.hostName = "nixos-local";
-  networking.wireless.enable = true;
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp1s0.useDHCP = true;
+  networking = {
+    hostName = "nixos-local";
+    wireless.enable = true;
+    useDHCP = false;
+    interfaces.enp1s0.useDHCP = true;
+  };
 
   #
   # Internationalisation config:
@@ -49,19 +57,18 @@
   # List services that you want to enable:
   #
 
-  services.xserver.enable = true; # enable the X11 windowing system
-  services.xserver.displayManager.lightdm.enable = true; # enable lightdm display manager
-  services.xserver.windowManager.dwm.enable = true; # enable dwm window manager
-  services.printing.enable = true; # enable CUPS to print documents
-  services.openssh.enable = true; # enable the OpenSSH daemon
-
-  #
-  # Keymap config (in X11):
-  #
-
-  services.xserver = {
-    layout = "us,ru";
-    xkbOptions = "grp:caps_toggle,caps_led:caps";
+  services = {
+    xserver = {
+      enable = true; # enable the X11 windowing system
+      videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
+      displayManager.lightdm.enable = true; # enable lightdm display manager
+      windowManager.dwm.enable = true; # enable dwm window manager
+      layout = "us,ru"; # set keyboard layout
+      xkbOptions = "grp:caps_toggle,caps_led:caps"; # switch keyboard layouts by Caps Lock
+    };
+    printing.enable = true; # enable CUPS to print documents
+    openssh.enable = true; # enable the OpenSSH daemon
+    blueman.enable = true; # GUI for bluetooth
   };
 
   #
@@ -69,22 +76,33 @@
   #
 
   sound.enable = true; # enable sound
-  hardware.pulseaudio = { # https://nixos.wiki/wiki/ALSA
-    enable = true;
-    support32Bit = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
-    package = pkgs.pulseaudioFull;
+
+  hardware = {
+    pulseaudio = { # https://nixos.wiki/wiki/ALSA
+      enable = true;
+      support32Bit = true;
+      extraModules = with pkgs; [ pulseaudio-modules-bt ];
+      package = pkgs.pulseaudioFull;
+    };
+    opengl = {
+      driSupport = true; # enable Vulkan driver
+      extraPackages = with pkgs; [ rocm-opencl-icd amdvlk ]; # use OpenCL or Vulcan drivers (auto)
+    };
+    bluetooth = { # https://nixos.wiki/wiki/Bluetooth
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 
-  services.xserver.videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
-  hardware.opengl = {
-    driSupport = true; # enable Vulkan driver
-    extraPackages = [ pkgs.rocm-opencl-icd pkgs.amdvlk ]; # use OpenCL or Vulcan drivers (auto)
-  };
+  #
+  # Environment variables:
+  #
 
-  hardware.bluetooth = { # https://nixos.wiki/wiki/Bluetooth
-    enable = true;
-    powerOnBoot = true;
+  environment.variables = {
+    EDITOR = "codium";
+    VISUAL = "codium";
+    BROWSER = "chromium";
+    GOPATH = "$HOME/.go";
   };
 
   #
@@ -129,28 +147,17 @@
   };
 
   #
-  # Services configs:
-  #
-
-  services = {
-    # GUI for bluetooth
-    blueman ={
-      enable = true;
-    };
-  };
-
-  #
   # List fonts installed in system:
   #
 
-  fonts.fonts = [
-    pkgs.noto-fonts-emoji
-    pkgs.liberation_ttf
-    pkgs.terminus_font
-    pkgs.freefont_ttf
-    pkgs.dejavu_fonts
-    pkgs.gyre-fonts
-    pkgs.unifont
+  fonts.fonts = with pkgs; [
+    noto-fonts-emoji
+    liberation_ttf
+    terminus_font
+    freefont_ttf
+    dejavu_fonts
+    gyre-fonts
+    unifont
   ];
 
   #
