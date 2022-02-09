@@ -104,6 +104,7 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     home = "/home/koddr";
+    shell = pkgs.fish;
   };
 
   #
