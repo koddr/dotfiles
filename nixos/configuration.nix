@@ -64,7 +64,7 @@
       displayManager.lightdm.enable = true; # enable lightdm display manager
       windowManager.dwm.enable = true; # enable dwm window manager
       layout = "us,ru"; # set keyboard layout
-      xkbOptions = "grp:caps_toggle,caps_led:caps"; # switch keyboard layouts by Caps Lock
+      xkbOptions = "grp:caps_toggle,grp_led:caps"; # switch keyboard layouts by Caps Lock
     };
     printing.enable = true; # enable CUPS to print documents
     openssh.enable = true; # enable the OpenSSH daemon
@@ -122,7 +122,7 @@
     vscodium
     tdesktop
     mpv
-    go
+    go_1_17
   ];
 
   #
@@ -150,15 +150,22 @@
   # List fonts installed in system:
   #
 
-  fonts.fonts = with pkgs; [
-    noto-fonts-emoji
-    liberation_ttf
-    terminus_font
-    freefont_ttf
-    dejavu_fonts
-    gyre-fonts
-    unifont
-  ];
+  fonts = {
+    fontconfig.enable = true;
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      noto-fonts-emoji
+      powerline-fonts
+      liberation_ttf
+      terminus_font
+      freefont_ttf
+      dejavu_fonts
+      gyre-fonts
+      corefonts
+      nerdfonts
+      unifont
+    ];
+  };
 
   #
   # User account:
