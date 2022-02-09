@@ -6,7 +6,7 @@ My environment `dotfiles`, configs & bash scripts.
 
 > Last tested on NixOS v21.11.
 
-Copy `./nixos/configuration.nix` to your `/mnt/dev/etc/nixos` folder.
+Copy `./nixos/configuration.nix` to your `/mnt/etc/nixos` folder.
 
 ## Fedora Workstation
 
