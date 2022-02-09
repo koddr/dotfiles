@@ -69,14 +69,23 @@
   #
 
   sound.enable = true; # enable sound
-  hardware.pulseaudio.enable = true; # enable pulseaudio driver for sound
+  hardware.pulseaudio = { # https://nixos.wiki/wiki/ALSA
+    enable = true;
+    support32Bit = true;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
+  };
 
   services.xserver.videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
-  hardware.opengl.driSupport = true; # enable Vulkan driver
-  hardware.opengl.extraPackages = with pkgs; [ # use OpenCL or Vulcan drivers (auto)
-    rocm-opencl-icd
-    amdvlk
-  ];
+  hardware.opengl = {
+    driSupport = true; # enable Vulkan driver
+    extraPackages = [ pkgs.rocm-opencl-icd pkgs.amdvlk ]; # use OpenCL or Vulcan drivers (auto)
+  };
+
+  hardware.bluetooth = { # https://nixos.wiki/wiki/Bluetooth
+    enable = true;
+    powerOnBoot = true;
+  };
 
   #
   # List packages installed in system profile:
@@ -89,64 +98,44 @@
     htop
     dwm
     dmenu
+    blueman
     alacritty
     chromium
     vscodium
     tdesktop
     mpv
+    go
   ];
 
   #
-  # User account:
+  # Programs configs:
   #
 
-  users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    home = "/home/koddr";
-    shell = pkgs.fish;
+  programs = {
+    # Git:
+    git = {
+      enable = true;
+      userName = "koddr";
+      userEmail = "${GIT_EMAIL}"; # don't forget to set email here
+    };
+    # Fish shell:
+    fish = {
+      enable = true;
+      shellAliases = {
+        ll = "ls -la";
+        rebuild = "sudo nixos-rebuild switch";
+      };
+    };
   };
 
   #
-  # Home manager config:
+  # Services configs:
   #
 
-  home-manager.users.koddr = { pkgs, ... }: {
-    #
-    # Options:
-    #
-
-    useGlobalPkgs = true;
-
-    #
-    # List of the home packages:
-    #
-
-    home.packages = [ pkgs.go ];
-
-    #
-    # Programs configs:
-    #
-
-    programs = {
-      # Home manager itself:
-      home-manager = {
-        enable = true;
-      };
-      # Git:
-      git = {
-        enable = true;
-        userName = "koddr";
-        userEmail = "${GIT_EMAIL}"; # don't forget to set email here
-      };
-      # Fish shell:
-      fizsh = {
-        enable = true;
-        shellAliases = {
-          ll = "ls -la";
-          rebuild = "sudo nixos-rebuild switch";
-        };
-      };
+  services = {
+    # GUI for bluetooth
+    blueman ={
+      enable = true;
     };
   };
 
@@ -163,6 +152,17 @@
     pkgs.gyre-fonts
     pkgs.unifont
   ];
+
+  #
+  # User account:
+  #
+
+  users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+    home = "/home/koddr";
+    shell = pkgs.fish;
+  };
 
   #
   # NixOS version.
