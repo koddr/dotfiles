@@ -157,6 +157,7 @@
     fontconfig.enable = true;
     fontDir.enable = true;
     fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" "SourceCodePro" ]; })
       noto-fonts-emoji
       powerline-fonts
       liberation_ttf
@@ -164,8 +165,6 @@
       freefont_ttf
       dejavu_fonts
       gyre-fonts
-      corefonts
-      nerdfonts
       unifont
     ];
   };
