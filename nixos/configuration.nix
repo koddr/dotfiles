@@ -17,13 +17,9 @@
         device = "nodev"; # or "/dev/sda" for non-EFI install only
         efiSupport = true; # enable EFI
       };
-      efi = {
-        efiSysMountPoint = "/boot/efi"; # set folder to EFI
-      };
+      efi.efiSysMountPoint = "/boot/efi"; # set folder to EFI
     };
-    initrd = {
-      kernelModules = [ "amdgpu" ]; # load correct AMD GPU driver
-    };
+    initrd.kernelModules = [ "amdgpu" ]; # load correct AMD GPU driver
   };
 
   #
@@ -64,7 +60,7 @@
       displayManager.lightdm.enable = true; # enable lightdm display manager
       windowManager.dwm.enable = true; # enable dwm window manager
       layout = "us,ru"; # set keyboard layout
-      xkbOptions = "grp:caps_toggle,grp_led:caps"; # switch keyboard layouts by Caps Lock
+      xkbOptions = "grp:caps_toggle,grp_led:caps,compose:ralt"; # switch keyboard layouts by Caps Lock
     };
     printing.enable = true; # enable CUPS to print documents
     openssh.enable = true; # enable the OpenSSH daemon
@@ -84,9 +80,9 @@
       extraModules = with pkgs; [ pulseaudio-modules-bt ];
       package = pkgs.pulseaudioFull;
     };
-    opengl = {
-      driSupport = true; # enable Vulkan driver
-      extraPackages = with pkgs; [ rocm-opencl-icd amdvlk ]; # use OpenCL or Vulcan drivers (auto)
+    opengl = { # https://nixos.org/manual/nixos/stable/index.html#sec-gpu-accel
+      driSupport = true;
+      extraPackages = with pkgs; [ rocm-opencl-icd amdvlk ];
     };
     bluetooth = { # https://nixos.wiki/wiki/Bluetooth
       enable = true;
@@ -122,6 +118,7 @@
     vscodium
     tdesktop
     mpv
+    podman
     go_1_17
   ];
 
@@ -136,12 +133,12 @@
       userName = "koddr";
       userEmail = "${GIT_EMAIL}"; # don't forget to set email here
     };
-    # Fish shell:
+    # Fish:
     fish = {
       enable = true;
       shellAliases = {
         ll = "ls -la";
-        rebuild = "sudo nixos-rebuild switch";
+        rb = "sudo nixos-rebuild switch";
       };
     };
   };
@@ -168,12 +165,24 @@
   };
 
   #
+  # Virtualisation config:
+  #
+
+  virtualisation = {
+    podman = { # https://nixos.wiki/wiki/Podman
+      enable = true;
+      dockerCompat = true;
+      dockerSocket = true;
+    };
+  };
+
+  #
   # User account:
   #
 
   users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     home = "/home/koddr";
     shell = pkgs.fish;
   };
