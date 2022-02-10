@@ -91,36 +91,42 @@
   };
 
   #
-  # Environment variables:
+  # Unfree config:
   #
 
-  environment.variables = {
-    EDITOR = "codium";
-    VISUAL = "codium";
-    BROWSER = "chromium";
-    GOPATH = "$HOME/.go";
+  nixpkgs.config.allowUnfree = true;
+
+  #
+  # Environment config:
+  #
+
+  environment = {
+    # Variables:
+    variables = {
+      EDITOR = "codium";
+      VISUAL = "codium";
+      BROWSER = "chromium";
+      GOPATH = "$HOME/.go";
+    };
+
+    # List packages installed in system profile:
+    systemPackages = with pkgs; [
+      git
+      fish
+      wget
+      htop
+      dwm
+      dmenu
+      blueman
+      alacritty
+      chromium
+      vscodium
+      tdesktop
+      mpv
+      podman
+      go_1_17
+    ];
   };
-
-  #
-  # List packages installed in system profile:
-  #
-
-  environment.systemPackages = with pkgs; [
-    git
-    fish
-    wget
-    htop
-    dwm
-    dmenu
-    blueman
-    alacritty
-    chromium
-    vscodium
-    tdesktop
-    mpv
-    podman
-    go_1_17
-  ];
 
   #
   # Programs configs:
@@ -172,7 +178,7 @@
     podman = { # https://nixos.wiki/wiki/Podman
       enable = true;
       dockerCompat = true;
-      dockerSocket = true;
+      dockerSocket.enable = true;
     };
   };
 
