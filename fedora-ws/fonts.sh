@@ -1,18 +1,10 @@
 #!/bin/bash
 
-HEADER="┌───┐"
-MIDDLE="│ > │"
-FOOTER="└───┘"
-
-echo $HEADER
-echo "$MIDDLE Create ~/.fonts directory"
-echo $FOOTER
+echo "✓ Create ~/.fonts directory"
 
 mkdir -p $HOME/.fonts
 
-echo $HEADER
-echo "$MIDDLE Download & unzip needed Google Fonts"
-echo $FOOTER
+echo "✓ Download & unzip needed Google Fonts"
 
 declare -a FONTS=(
     "Source+Code+Pro" \
@@ -36,17 +28,13 @@ do
     rm /tmp/$ZIP_NAME.zip
 done
 
-echo $HEADER
-echo "$MIDDLE Download & install Liberation(tm) Fonts"
-echo $FOOTER
+echo "✓ Download & install Liberation(tm) Fonts"
 
 rm -rf $HOME/.fonts/liberation-fonts
 wget -O /tmp/liberation-fonts.tar.gz https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
 tar -C $HOME/.fonts -xzf /tmp/liberation-fonts.tar.gz
 rm -rf /tmp/liberation-fonts.tar.gz
 
-echo $HEADER
-echo "$MIDDLE Updating the font cache"
-echo $FOOTER
+echo "✓ Updating the font cache"
 
 fc-cache -f
