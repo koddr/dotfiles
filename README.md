@@ -4,13 +4,13 @@ My environment `dotfiles`, configs & bash scripts.
 
 ## NixOS
 
-> Last tested on NixOS v21.11.
+> Last tested on NixOS `v21.11`.
 
 Copy `./nixos/configuration.nix` to your `/mnt/etc/nixos` folder.
 
 ## Fedora Workstation
 
-> Last tested on Fedora v35.
+> Last tested on Fedora `v35`.
 
 Post install script (run *only* as sudo user):
 
@@ -29,3 +29,8 @@ Install needed VS Code extensions (run as normal user):
 ```bash
 ./fedora-ws/vscode-extensions.sh
 ```
+
+### GNOME extensions
+
+- [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)
+- [Gnome 4x UI Improvements](https://extensions.gnome.org/extension/4158/gnome-40-ui-improvements/)
