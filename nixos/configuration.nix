@@ -64,7 +64,7 @@
     };
     printing.enable = true; # enable CUPS to print documents
     openssh.enable = true; # enable the OpenSSH daemon
-    blueman.enable = true; # GUI for bluetooth
+    blueman.enable = true; # enable GUI for bluetooth
   };
 
   #
@@ -94,7 +94,7 @@
   # Unfree config:
   #
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   #
   # Environment config:
@@ -112,6 +112,7 @@
     # List packages installed in system profile:
     systemPackages = with pkgs; [
       git
+      gcc
       fish
       wget
       htop
@@ -136,7 +137,7 @@
     # Git:
     git = {
       enable = true;
-      userName = "koddr";
+      userName = "${GIT_USERNAME}"; # don't forget to set username here
       userEmail = "${GIT_EMAIL}"; # don't forget to set email here
     };
     # Fish:
@@ -187,7 +188,7 @@
 
   users.users.koddr = { # don't forget to set a password with 'passwd koddr' after boot
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     home = "/home/koddr";
     shell = pkgs.fish;
   };
