@@ -34,7 +34,16 @@
 
   networking = {
     hostName = "nixos-local";
-    wireless.enable = true;
+    networkmanager.enable = true;
+    wireless = {
+      enable = true;
+      networks = { # https://nixos.org/manual/nixos/stable/index.html#sec-wireless
+        "$WIFI_SSID" = { # don't forget to change this to your SSID
+          hidden = true;
+          pskRaw = "$PSK_RAW_HASH"; # don't forget to run 'wpa_passphrase <SSID> <PASSWORD>' before install
+        };
+      };
+    };
     useDHCP = false;
     interfaces.enp1s0.useDHCP = true;
   };
