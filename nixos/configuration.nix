@@ -10,7 +10,7 @@
   #
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.kernels.linux_5_16; # https://nixos.org/manual/nixos/stable/index.html#sec-kernel-config
+    kernelPackages = pkgs.linuxPackages_latest; # https://nixos.wiki/wiki/Linux_kernel
     loader = {
       grub = {
         enable = true; # use GRUB boot loader
