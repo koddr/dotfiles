@@ -67,15 +67,30 @@
     xserver = {
       enable = true; # enable the X11 windowing system
       videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
-      displayManager.gdm.enable = true; # enable gdm display manager
-      windowManager.bspwm.enable = true; # enable dwm window manager
+      displayManager = {
+        gdm.enable = true; # enable gdm display manager
+        defaultSession = "none+bspwm"; # add default session
+      };
+      windowManager.bspwm.enable = true; # enable bspwm window manager
       layout = "us,ru"; # set keyboard layout
       xkbOptions = "grp:caps_toggle,grp_led:caps,compose:ralt"; # switch keyboard layouts by Caps Lock
+    };
+    sxhkd = {
+      enable = true; # enable easy X keybindings
+      keybindings = { # https://github.com/baskerville/sxhkd
+        "super + Return" = "alacritty";
+      };
     };
     printing.enable = true; # enable CUPS to print documents
     openssh.enable = true; # enable the OpenSSH daemon
     blueman.enable = true; # enable GUI for bluetooth
   };
+  
+  #
+  # XSession config:
+  #
+
+  xsession.windowManager.bspwm.enable = true;
 
   #
   # Hardware config:
