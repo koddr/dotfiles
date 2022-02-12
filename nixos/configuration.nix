@@ -67,11 +67,8 @@
     xserver = {
       enable = true; # enable the X11 windowing system
       videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
-      displayManager = {
-        lightdm.enable = true; # enable display manager
-        defaultSession = "none+dwm"; # add default session
-      };
-      windowManager.dwm.enable = true; # enable dwm window manager
+      displayManager.gdm.enable = true; # enable display manager
+      desktopManager.gnome.enable = true; # enable desktop manager
       layout = "us,ru"; # set keyboard layout
       xkbOptions = "grp:caps_toggle,grp_led:caps,compose:ralt"; # switch keyboard layouts by Caps Lock
     };
@@ -125,21 +122,31 @@
     variables = {
       EDITOR = "micro";
       VISUAL = "codium";
-      BROWSER = "chromium";
+      BROWSER = "firefox";
       GOPATH = "$HOME/.go";
     };
 
+    # List of GNOME packages to exclude:
+    gnome.excludePackages = with pkgs; [
+      gnome.cheese
+      gnome-photos
+      gnome.gnome-music
+      gnome.gnome-terminal
+      gnome.gedit
+      epiphany
+      evince
+      gnome.gnome-characters
+      gnome.totem
+      gnome.tali
+      gnome.iagno
+      gnome.hitori
+      gnome.atomix
+      gnome-tour
+      gnome.geary
+    ];
+
     # List packages installed in system profile:
     systemPackages = with pkgs; [
-      # Window manager:
-      betterlockscreen
-      ranger
-      dunst
-      picom
-      dmenu
-      dwm
-      feh
-
       # Multimedia:
       mpv
 
@@ -150,10 +157,8 @@
       wget
 
       # GUI Apps:
-      chromium
       tdesktop
       firefox
-      blueman
       
       # Development:
       vscodium
