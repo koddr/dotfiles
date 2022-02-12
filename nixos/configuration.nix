@@ -72,13 +72,6 @@
       layout = "us,ru"; # set keyboard layout
       xkbOptions = "grp:caps_toggle,grp_led:caps,compose:ralt"; # switch keyboard layouts by Caps Lock
     };
-    picom = {
-      enable = true; # enable picom
-      fade = true;
-      inactiveOpacity = 0.9;
-      shadow = true;
-      fadeDelta = 4;
-    };
     printing.enable = true; # enable CUPS to print documents
     openssh.enable = true; # enable the OpenSSH daemon
     blueman.enable = true; # enable GUI for bluetooth
