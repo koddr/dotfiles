@@ -68,7 +68,7 @@
       enable = true; # enable the X11 windowing system
       videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
       displayManager.gdm.enable = true; # enable gdm display manager
-      windowManager.dwm.enable = true; # enable dwm window manager
+      windowManager.bspwm.enable = true; # enable dwm window manager
       layout = "us,ru"; # set keyboard layout
       xkbOptions = "grp:caps_toggle,grp_led:caps,compose:ralt"; # switch keyboard layouts by Caps Lock
     };
@@ -122,15 +122,20 @@
     # List packages installed in system profile:
     systemPackages = with pkgs; [
       # Window manager:
-      dwm
-      dmenu
+      betterlockscreen
+      polybar
+      ranger
+      bspwm
+      dunst
+      sxhkd
+      rofi
+      feh
 
       # Multimedia:
       mpv
 
       # Terminal:
       alacritty
-      ranger
       fish
       htop
       wget
@@ -202,6 +207,7 @@
       freefont_ttf
       roboto
       inter
+      siji
     ];
   };
 
