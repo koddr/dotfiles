@@ -1,7 +1,0 @@
-cmds
-dotfiles
-lofi
-nixos
-pkill
-socat
-wotchy
