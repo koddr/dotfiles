@@ -24,6 +24,17 @@ Run post-install script (run **only** as sudo user):
 sudo ./fedora/post-install.sh
 ```
 
+### Fonts
+
+Install needed fonts:
+
+- [Google Fonts](https://github.com/google/fonts)
+- [Liberation](https://github.com/liberationfonts/liberation-fonts)
+
+```bash
+./fedora/fonts.sh
+```
+
 ### Extensions
 
 #### GNOME
@@ -37,17 +48,6 @@ sudo ./fedora/post-install.sh
 - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 - [DuckDuckGo](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/)
 - [HTTPS Everywhere](https://www.eff.org/https-everywhere)
-
-### Fonts
-
-Install needed fonts:
-
-- [Google Fonts](https://github.com/google/fonts)
-- [Liberation](https://github.com/liberationfonts/liberation-fonts)
-
-```bash
-./fedora/fonts.sh
-```
 
 ### Android Studio
 
