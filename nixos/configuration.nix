@@ -39,9 +39,9 @@
     wireless = {
       enable = true;
       networks = { # https://nixos.org/manual/nixos/stable/index.html#sec-wireless
-        "$WIFI_SSID" = { # don't forget to change this to your SSID
+        "${WIFI_SSID}" = { # don't forget to change this to your SSID
           hidden = true;
-          pskRaw = "$PSK_RAW_HASH"; # don't forget to run 'wpa_passphrase <SSID> <PASSWORD>' before install
+          pskRaw = "${WIFI_PASSWORD}"; # don't forget to run 'wpa_passphrase <SSID> <PASSWORD>' before install
         };
       };
     };
@@ -67,7 +67,7 @@
     xserver = {
       enable = true; # enable the X11 windowing system
       videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
-      displayManager.lightdm.enable = true; # enable lightdm display manager
+      displayManager.gdm.enable = true; # enable gdm display manager
       windowManager.dwm.enable = true; # enable dwm window manager
       layout = "us,ru"; # set keyboard layout
       xkbOptions = "grp:caps_toggle,grp_led:caps,compose:ralt"; # switch keyboard layouts by Caps Lock
@@ -113,7 +113,7 @@
   environment = {
     # Variables:
     variables = {
-      EDITOR = "codium";
+      EDITOR = "micro";
       VISUAL = "codium";
       BROWSER = "chromium";
       GOPATH = "$HOME/.go";
@@ -121,21 +121,33 @@
 
     # List packages installed in system profile:
     systemPackages = with pkgs; [
-      git
-      gcc
-      fish
-      wget
-      htop
       dwm
       dmenu
-      blueman
-      alacritty
-      chromium
-      vscodium
-      tdesktop
       mpv
+      # Terminal:
+      alacritty
+      fish
+      htop
+      wget
+
+      # GUI Apps:
+      tdesktop
+      blueman
+
+      # Browsers:
+      chromium
+      firefox
+      
+      # Development:
+      vscodium
       podman
+      micro
+      gcc
+      git
+      
+      # Programming languages:
       go_1_17
+      kotlin
     ];
   };
 
@@ -155,6 +167,7 @@
       enable = true;
       shellAliases = {
         ll = "ls -la";
+        nc = "sudo micro /etc/nixos/configuration.nix";
         rb = "sudo nixos-rebuild switch";
       };
     };
@@ -168,15 +181,23 @@
     fontconfig.enable = true;
     fontDir.enable = true;
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" "SourceCodePro" ]; })
+      (nerdfonts.override { 
+        fonts = [
+          "NerdFontsSymbolsOnly"
+          "DejaVuSansMono"
+          "LiberationMono"
+          "JetBrainsMono"
+          "FiraCode"
+          "Terminus"
+          "Iosevka"
+          "Noto"
+          "Hack"
+        ]; 
+      })
       noto-fonts-emoji
-      powerline-fonts
-      liberation_ttf
-      terminus_font
       freefont_ttf
-      dejavu_fonts
-      gyre-fonts
-      unifont
+      roboto
+      inter
     ];
   };
 
