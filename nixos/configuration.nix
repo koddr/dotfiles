@@ -206,7 +206,6 @@
     fonts = with pkgs; [
       (nerdfonts.override { 
         fonts = [
-          "NerdFontsSymbolsOnly"
           "DejaVuSansMono"
           "LiberationMono"
           "JetBrainsMono"
