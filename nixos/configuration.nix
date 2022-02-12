@@ -121,22 +121,25 @@
 
     # List packages installed in system profile:
     systemPackages = with pkgs; [
+      # Window manager:
       dwm
       dmenu
+
+      # Multimedia:
       mpv
+
       # Terminal:
       alacritty
+      ranger
       fish
       htop
       wget
 
       # GUI Apps:
-      tdesktop
-      blueman
-
-      # Browsers:
       chromium
+      tdesktop
       firefox
+      blueman
       
       # Development:
       vscodium
@@ -146,8 +149,8 @@
       git
       
       # Programming languages:
+      python310
       go_1_17
-      kotlin
     ];
   };
 
@@ -188,6 +191,7 @@
           "LiberationMono"
           "JetBrainsMono"
           "FiraCode"
+          "FiraMono"
           "Terminus"
           "Iosevka"
           "Noto"
