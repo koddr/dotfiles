@@ -190,8 +190,8 @@
       enable = true;
       shellAliases = {
         ll = "ls -la";
-        nc = "sudo micro /etc/nixos/configuration.nix";
-        rb = "sudo nixos-rebuild switch";
+        nic = "sudo micro /etc/nixos/configuration.nix";
+        rbs = "sudo nixos-rebuild switch";
       };
     };
   };
