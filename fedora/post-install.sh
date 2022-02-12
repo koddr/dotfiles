@@ -34,7 +34,7 @@ chsh -s /usr/bin/fish
 
 echo -e "\n✓ Install user & system utilities"
 
-dnf install -y micro mpv xclip
+dnf install -y micro xclip mpv virt-manager
 
 echo -e "\n✓ Set environment variables"
 
