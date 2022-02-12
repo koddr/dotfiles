@@ -68,29 +68,24 @@
       enable = true; # enable the X11 windowing system
       videoDrivers = [ "amdgpu" ]; # use correct AMD GPU drivers for X11
       displayManager = {
-        gdm.enable = true; # enable gdm display manager
-        defaultSession = "none+bspwm"; # add default session
+        lightdm.enable = true; # enable display manager
+        defaultSession = "none+dwm"; # add default session
       };
-      windowManager.bspwm.enable = true; # enable bspwm window manager
+      windowManager.dwm.enable = true; # enable dwm window manager
       layout = "us,ru"; # set keyboard layout
       xkbOptions = "grp:caps_toggle,grp_led:caps,compose:ralt"; # switch keyboard layouts by Caps Lock
     };
-    sxhkd = {
-      enable = true; # enable easy X keybindings
-      keybindings = { # https://github.com/baskerville/sxhkd
-        "super + Return" = "alacritty";
-      };
+    picom = {
+      enable = true; # enable picom
+      fade = true;
+      inactiveOpacity = 0.9;
+      shadow = true;
+      fadeDelta = 4;
     };
     printing.enable = true; # enable CUPS to print documents
     openssh.enable = true; # enable the OpenSSH daemon
     blueman.enable = true; # enable GUI for bluetooth
   };
-  
-  #
-  # XSession config:
-  #
-
-  xsession.windowManager.bspwm.enable = true;
 
   #
   # Hardware config:
@@ -138,12 +133,11 @@
     systemPackages = with pkgs; [
       # Window manager:
       betterlockscreen
-      polybar
       ranger
-      bspwm
       dunst
-      sxhkd
-      rofi
+      picom
+      dmenu
+      dwm
       feh
 
       # Multimedia:
