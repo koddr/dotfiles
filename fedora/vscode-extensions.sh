@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo "✓ Install VS Code extensions"
+##############
+# RUN SCRIPT #
+##############
+
+echo -e "\n✓ Install VS Code extensions"
 
 declare -a EXTENSIONS=(
     "streetsidesoftware.code-spell-checker-russian" \
@@ -24,12 +28,5 @@ do
     code --install-extension $EXTENSION
 done
 
-echo "✓ Enable podman.socket to use in VS Code Docker extension"
-
-systemctl --user enable --now podman.socket
-
-echo "✓ Manual actions to do"
-
-echo "Add podman.socket to Docker Host option in settings.json (VS Code):"
-echo "  - 'docker.host' with 'unix:///run/user/$(id -u)/podman/podman.sock' value"
-echo ""
+echo -e "\n✓ Add podman.socket to Docker Host option in settings.json (VS Code):"
+echo -e "\t- 'docker.host' with 'unix:///run/user/$(id -u)/podman/podman.sock' value"
