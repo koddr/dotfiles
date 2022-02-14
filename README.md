@@ -54,7 +54,7 @@ Install needed fonts:
 
 ### Fish
 
-Fish configuration (`~/.config/fish/config.fish`):
+[Fish](https://fishshell.com/) shell configuration (`~/.config/fish/config.fish`):
 
 ```bash
 # Editors
