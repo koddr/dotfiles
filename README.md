@@ -35,6 +35,10 @@ Install needed fonts:
 ./fedora/fonts.sh
 ```
 
+### Cursors
+
+- [Phinger cursors](https://github.com/phisch/phinger-cursors)
+
 ### Extensions
 
 #### GNOME
@@ -47,9 +51,12 @@ Install needed fonts:
 - [Bitwarden](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
 - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 - [DuckDuckGo](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/)
-- [HTTPS Everywhere](https://www.eff.org/https-everywhere)
 
 ### Android Studio
+
+Just download JetBrains [Toolbox](https://www.jetbrains.com/toolbox-app/) app, copy to `~/.jetbrains/toolbox`, and install from there.
+
+#### Manual installation
 
 Install Android Studio from Google website (run **only** as sudo user):
 
@@ -63,7 +70,17 @@ Tips & Tricks:
   - Open Android Studio by `/usr/local/android-studio/bin/studio.sh` command
   - Go to `Tools` and click `Create Desktop Entry`
 
+### GoLand
+
+Just download JetBrains [Toolbox](https://www.jetbrains.com/toolbox-app/) app, copy to `~/.jetbrains/toolbox`, and install from there.
+
+> Don't forget to Sign In to your JetBrains account in GoLand 😉
+
 ### VS Code
+
+Flathub version of the original `VS Code` is always out of date, therefore install it from the Microsoft repository. 
+
+> `VSCodium` & `Code - OSS` are good, but they're not provided Sign In to GitHub account to sync config and keybindings (_unfortunately_).
 
 Install VS Code from Microsoft repository (run **only** as sudo user):
 
