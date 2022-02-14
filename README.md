@@ -52,9 +52,28 @@ Install needed fonts:
 - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 - [DuckDuckGo](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/)
 
+### Fish
+
+Fish configuration (`~/.config/fish/config.fish`):
+
+```bash
+# Editors
+set -gx EDITOR nano
+
+# Podman
+alias docker "podman"
+set -gx DOCKER_HOST unix:///run/user/1000/podman/podman.sock
+
+# Golang
+set -gx PATH ~/Golang/sdk/go$(PUT_GO_VERSION_HERE)/bin $PATH
+set -gx GOPATH ~/.go
+```
+
 ### Android Studio
 
 Just download JetBrains [Toolbox](https://www.jetbrains.com/toolbox-app/) app, copy to `~/.jetbrains/toolbox`, and install from there.
+
+> Don't forget to Sign In to your Google account in Android Studio 😉
 
 #### Manual installation
 
@@ -100,8 +119,6 @@ Tips & Tricks:
 
 - Add `podman.sock` to Docker Host option in `~/.config/Code/User/settings.json`:
   - `docker.host` with `unix:///run/user/$(id -u)/podman/podman.sock` value
-- Create alias to shell:
-  - `alias docker=podman`
 
 ## NixOS
 
