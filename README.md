@@ -100,6 +100,8 @@ Tips & Tricks:
 
 - Add `podman.sock` to Docker Host option in `~/.config/Code/User/settings.json`:
   - `docker.host` with `unix:///run/user/$(id -u)/podman/podman.sock` value
+- Create alias to shell:
+  - `alias docker=podman`
 
 ## NixOS
 
