@@ -84,6 +84,32 @@ chsh -s /usr/bin/fish
 
 > Don't forget to re-login after that 😉
 
+## Go tools
+
+- [go-critic](https://github.com/go-critic/go-critic):
+
+```bash
+go install github.com/go-critic/go-critic/cmd/gocritic@latest
+```
+
+- [golangci-lint](https://github.com/golangci/golangci-lint):
+
+```bash
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+```
+
+- [gosec](https://github.com/securego/gosec):
+
+```bash
+go install github.com/securego/gosec/v2/cmd/gosec@latest
+```
+
+- [goreleaser](https://github.com/goreleaser/goreleaser):
+
+```bash
+go install github.com/goreleaser/goreleaser@latest
+```
+
 ### Android Studio
 
 Just download JetBrains [Toolbox](https://www.jetbrains.com/toolbox-app/) app, copy to `~/.jetbrains/toolbox`, and install from there.
