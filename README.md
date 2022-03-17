@@ -84,7 +84,7 @@ chsh -s /usr/bin/fish
 
 > Don't forget to re-login after that 😉
 
-## Go tools
+### Go tools
 
 - [go-critic](https://github.com/go-critic/go-critic):
 
@@ -108,6 +108,14 @@ go install github.com/securego/gosec/v2/cmd/gosec@latest
 
 ```bash
 go install github.com/goreleaser/goreleaser@latest
+```
+
+### UPX
+
+Install [Ultimate Packer for eXecutables](https://github.com/upx/upx):
+
+```bash
+sudo dnf install upx -y
 ```
 
 ### Android Studio
