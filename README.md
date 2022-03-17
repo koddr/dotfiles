@@ -55,7 +55,13 @@ Install needed fonts:
 
 ### Fish
 
-[Fish](https://fishshell.com/) shell configuration (`~/.config/fish/config.fish`):
+Install [Fish](https://fishshell.com/) shell and create config folder:
+
+```bash
+sudo dnf install fish -y && mkdir -p ~/.config/fish
+```
+
+Set configuration (`~/.config/fish/config.fish`):
 
 ```bash
 # Editors
@@ -69,6 +75,14 @@ set -gx DOCKER_HOST unix:///run/user/1000/podman/podman.sock
 set -gx PATH ~/Golang/sdk/go$(PUT_GO_VERSION_HERE)/bin $PATH
 set -gx GOPATH ~/.go
 ```
+
+Set `fish` as default shell:
+
+```bash
+chsh -s /usr/bin/fish
+```
+
+> Don't forget to re-login after that 😉
 
 ### Android Studio
 
