@@ -38,11 +38,13 @@ Add this line:
 GRUB_CMDLINE_LINUX_DEFAULT="amdgpu.noretry=0"
 ```
 
-Re-build grub config & restart:
+Re-build grub config:
 
 ```bash
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
+
+> Don't forget to restart after that and check kernel params by `cat /proc/cmdline` command 😉
 
 ### Fonts
 
