@@ -24,6 +24,26 @@ Run post-install script (run **only** as sudo user):
 sudo ./fedora/post-install.sh
 ```
 
+### AMD hardware hacks
+
+Open default grub config:
+
+```bash
+sudo nano /etc/default/grub
+```
+
+Add this line:
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="amdgpu.noretry=0"
+```
+
+Re-build grub config & restart:
+
+```bash
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
 ### Fonts
 
 Install needed fonts:
