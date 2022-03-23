@@ -26,7 +26,7 @@ sudo ./fedora/post-install.sh
 
 ### AMD hardware hacks
 
-Open default grub config:
+Open default grub [config](https://wiki.archlinux.org/title/Kernel_parameters#GRUB):
 
 ```bash
 sudo nano /etc/default/grub
