@@ -106,7 +106,15 @@ chsh -s /usr/bin/fish
 
 > Don't forget to re-login after that 😉
 
-### Go tools
+### Go
+
+Install Go (run **only** as sudo user):
+
+```bash
+sudo ./fedora/golang.sh
+```
+
+#### Go tools
 
 - [go-critic](https://github.com/go-critic/go-critic):
 
