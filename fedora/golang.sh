@@ -4,7 +4,7 @@
 # VARIABLES #
 #############
 
-GO_VERSION="1.17.7"
+GO_VERSION="1.18"
 GO_DOWNLOAD_URL="https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz"
 
 ##############
