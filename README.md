@@ -68,12 +68,15 @@ Install needed fonts:
 - [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)
 - [Gnome 4x UI Improvements](https://extensions.gnome.org/extension/4158/gnome-40-ui-improvements/)
 
-#### Firefox
+#### Browser
 
-- [Bitwarden](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
-- [LanguageTool](https://addons.mozilla.org/en-US/firefox/addon/languagetool/)
-- [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
-- [DuckDuckGo](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/)
+| Name | Firefox | Chrome |
+| --- | --- | --- |
+| Bitwarden | [link](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/) | [link](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb) |
+| LanguageTool | [link](https://addons.mozilla.org/en-US/firefox/addon/languagetool/) | [link](https://chrome.google.com/webstore/detail/grammar-spell-checker-%E2%80%94-l/oldceeleldhonbafppcapldpdifcinji)
+| uBlock Origin | [link](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) | [link](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
+| AdBlock Plus | [link](https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/) | [link](https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb)
+| DuckDuckGo | [link](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/) | [link](https://chrome.google.com/webstore/detail/duckduckgo-privacy-essent/bkdgflcldnnnapblkhphbgpggdiikppg) |
 
 ### Fish
 
