@@ -97,7 +97,7 @@ alias docker "podman"
 set -gx DOCKER_HOST unix:///run/user/1000/podman/podman.sock
 
 # Golang
-set -gx PATH ~/.sdk/go$(PUT_GO_VERSION_HERE)/bin $PATH
+set -gx PATH /usr/local/go/bin $PATH
 set -gx GOPATH ~/.go
 ```
 
