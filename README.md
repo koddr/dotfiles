@@ -63,6 +63,12 @@ Install needed fonts:
 ./fedora/fonts.sh
 ```
 
+Install Microsoft fonts:
+
+```bash
+sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+```
+
 ### Cursors
 
 - [Phinger cursors](https://github.com/phisch/phinger-cursors)
