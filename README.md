@@ -46,6 +46,12 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 > Don't forget to restart after that and check kernel params by `cat /proc/cmdline` command 😉
 
+### Keyboard layout
+
+```bash
+dconf write /org/gnome/desktop/input-sources/xkb-options "['grp_led:caps', 'lv3:ralt_switch', 'misc:typo', 'nbsp:level3', 'lv3:lsgt_switch', 'grp:shift_caps_switch']"
+```
+
 ### Fonts
 
 Install needed fonts:
