@@ -6,15 +6,15 @@ My environment `dotfiles`, configs & bash scripts.
 
 > Last test on Fedora `36`.
 
-Speed up DNF:
+### Speed up DNF
 
-1. Open config:
+Open config:
 
 ```bash
 sudo nano /etc/dnf/dnf.conf
 ```
 
-2. Add this lines:
+Add this lines:
 
 ```bash
 fastestmirror=True
@@ -22,19 +22,21 @@ skip_if_unavailable=True
 max_parallel_downloads=10
 ```
 
-3. Clean cache:
+Clean cache:
 
 ```bash
 sudo dnf clean all
 ```
 
-4. Clone this repository:
+### Post-intall script
+
+Clone this repository:
 
 ```bash
 git clone https://github.com/koddr/dotfiles.git && cd dotfiles
 ```
 
-5. Run post-install script (run **only** as sudo user):
+Run post-install script (run **only** as sudo user):
 
 ```bash
 sudo make fedora-post-install
