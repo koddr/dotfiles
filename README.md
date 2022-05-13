@@ -4,25 +4,50 @@ My environment `dotfiles`, configs & bash scripts.
 
 ## Fedora Workstation
 
-> Last test on Fedora `35`.
+> Last test on Fedora `36`.
 
-Clone this repository:
+Speed up DNF:
+
+1. Open config:
+
+```bash
+sudo nano /etc/dnf/dnf.conf
+```
+
+2. Add this lines:
+
+```bash
+fastestmirror=True
+skip_if_unavailable=True
+max_parallel_downloads=10
+```
+
+3. Clean cache:
+
+```bash
+sudo dnf clean all
+```
+
+4. Clone this repository:
 
 ```bash
 git clone https://github.com/koddr/dotfiles.git && cd dotfiles
 ```
 
-Make all scripts executable:
+5. Run post-install script (run **only** as sudo user):
 
 ```bash
-chmod +x ./fedora/*.sh
+sudo make fedora-post-install
 ```
 
-Run post-install script (run **only** as sudo user):
+### Fonts
 
-```bash
-sudo ./fedora/post-install.sh
-```
+- [Google Fonts](https://github.com/google/fonts)
+- [Liberation](https://github.com/liberationfonts/liberation-fonts)
+
+### Cursors
+
+- [Phinger cursors](https://github.com/phisch/phinger-cursors)
 
 ### AMD hardware hacks
 
@@ -46,41 +71,13 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 > Don't forget to restart after that and check kernel params by `cat /proc/cmdline` command 😉
 
-### Keyboard layout
+### GNOME
 
-```bash
-dconf write /org/gnome/desktop/input-sources/xkb-options "['grp_led:caps', 'lv3:ralt_switch', 'misc:typo', 'nbsp:level3', 'lv3:lsgt_switch', 'grp:shift_caps_switch']"
-```
+| Name | - |
+| --- | --- |
+| Dash to Dock | [link](https://extensions.gnome.org/extension/307/dash-to-dock/) |
 
-### Fonts
-
-Install needed fonts:
-
-- [Google Fonts](https://github.com/google/fonts)
-- [Liberation](https://github.com/liberationfonts/liberation-fonts)
-
-```bash
-./fedora/fonts.sh
-```
-
-Install Microsoft fonts:
-
-```bash
-sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
-```
-
-### Cursors
-
-- [Phinger cursors](https://github.com/phisch/phinger-cursors)
-
-### Extensions
-
-#### GNOME
-
-- [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)
-- [Gnome 4x UI Improvements](https://extensions.gnome.org/extension/4158/gnome-40-ui-improvements/)
-
-#### Browser
+### Browser
 
 | Name | Firefox | Chrome |
 | --- | --- | --- |
@@ -90,132 +87,59 @@ sudo dnf install https://downloads.sourceforge.net/project/mscorefonts2/rpms/mst
 | AdBlock Plus | [link](https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/) | [link](https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb)
 | DuckDuckGo | [link](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/) | [link](https://chrome.google.com/webstore/detail/duckduckgo-privacy-essent/bkdgflcldnnnapblkhphbgpggdiikppg) |
 
-### Fish
+### Shell
 
-Install [Fish](https://fishshell.com/) shell and create config folder:
+#### Fish
 
-```bash
-sudo dnf install fish -y && mkdir -p ~/.config/fish
-```
-
-Set configuration (`~/.config/fish/config.fish`):
+Add [Fish](https://fishshell.com/) shell config:
 
 ```bash
-# Editors
-set -gx EDITOR nano
-
-# Podman
-alias docker "podman"
-set -gx DOCKER_HOST unix:///run/user/1000/podman/podman.sock
-
-# Golang
-set -gx PATH /usr/local/go/bin $PATH
-set -gx GOPATH ~/.go
+make fish-shell-config
 ```
-
-Set `fish` as default shell:
-
-```bash
-chsh -s /usr/bin/fish
-```
-
-> Don't forget to re-login after that 😉
 
 ### Go
 
 Install Go (run **only** as sudo user):
 
 ```bash
-sudo ./fedora/golang.sh
+sudo make golang-install VERSION=1.18.2
 ```
+
+> To update/re-install Go, just run this command with needed version 😉
 
 #### Go tools
 
-- [go-critic](https://github.com/go-critic/go-critic):
+Install special Go tools for projects:
 
 ```bash
-go install github.com/go-critic/go-critic/cmd/gocritic@latest
+sudo make golang-tools
 ```
 
-- [golangci-lint](https://github.com/golangci/golangci-lint):
+- [go-critic](https://github.com/go-critic/go-critic)
+- [golangci-lint](https://github.com/golangci/golangci-lint)
+- [gosec](https://github.com/securego/gosec)
+- [goreleaser](https://github.com/goreleaser/goreleaser)
+
+### IDE
+
+#### JetBrains
+
+Just [download](https://www.jetbrains.com/toolbox-app/download/download-thanks.html?platform=linux) JetBrains Toolbox app, copy to `~/.jetbrains/toolbox`, and install any IDEs from there.
+
+> Don't forget to Sign In to your Google Account in IDE 😉
+
+#### VSCode
+
+Install VSCode from Microsoft repository (run **only** as sudo user):
 
 ```bash
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+sudo make vscode-install
 ```
 
-- [gosec](https://github.com/securego/gosec):
-
-```bash
-go install github.com/securego/gosec/v2/cmd/gosec@latest
-```
-
-- [goreleaser](https://github.com/goreleaser/goreleaser):
-
-```bash
-go install github.com/goreleaser/goreleaser@latest
-```
-
-### UPX
-
-Install [Ultimate Packer for eXecutables](https://github.com/upx/upx):
-
-```bash
-sudo dnf install upx -y
-```
-
-### Android Studio
-
-Just download JetBrains [Toolbox](https://www.jetbrains.com/toolbox-app/) app, copy to `~/.jetbrains/toolbox`, and install from there.
-
-> Don't forget to Sign In to your Google account in Android Studio 😉
-
-#### Manual installation
-
-Install Android Studio from Google website (run **only** as sudo user):
-
-```bash
-sudo ./fedora/android-studio.sh
-```
-
-Tips & Tricks:
-
-- Add Android Studio icon to GNOME Application list:
-  - Open Android Studio by `/usr/local/android-studio/bin/studio.sh` command
-  - Go to `Tools` and click `Create Desktop Entry`
-
-### GoLand
-
-Just download JetBrains [Toolbox](https://www.jetbrains.com/toolbox-app/) app, copy to `~/.jetbrains/toolbox`, and install from there.
-
-> Don't forget to Sign In to your JetBrains account in GoLand 😉
-
-### VS Code
-
-Flathub version of the original `VS Code` is always out of date, therefore install it from the Microsoft repository. 
-
-> `VSCodium` & `Code - OSS` are good, but they're not provided Sign In to GitHub account to sync config and keybindings (_unfortunately_).
-
-Install VS Code from Microsoft repository (run **only** as sudo user):
-
-```bash
-sudo ./fedora/vscode.sh
-```
-
-Install needed extensions:
-
-```bash
-./fedora/vscode-extensions.sh
-```
-
-> Or just Sign In to your GitHub account in VS Code 😉
-
-Tips & Tricks:
-
-- Add `podman.sock` to Docker Host option in `~/.config/Code/User/settings.json`:
-  - `docker.host` with `unix:///run/user/$(id -u)/podman/podman.sock` value
+> Don't forget to Sign In to your GitHub account in VSCode 😉
 
 ## NixOS
 
 > Last test on NixOS `21.11`.
 
-Copy `./nixos/configuration.nix` to your `/mnt/etc/nixos` folder.
+Copy `./configs/nixos/configuration.nix` to your `/mnt/etc/nixos` folder.
