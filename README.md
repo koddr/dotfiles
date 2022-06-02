@@ -75,19 +75,19 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ### GNOME
 
-| Name | - |
-| --- | --- |
+| Name         | -                                                                |
+| ------------ | ---------------------------------------------------------------- |
 | Dash to Dock | [link](https://extensions.gnome.org/extension/307/dash-to-dock/) |
 
 ### Browser
 
-| Name | Firefox | Chrome |
-| --- | --- | --- |
-| Bitwarden | [link](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/) | [link](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb) |
-| LanguageTool | [link](https://addons.mozilla.org/en-US/firefox/addon/languagetool/) | [link](https://chrome.google.com/webstore/detail/grammar-spell-checker-%E2%80%94-l/oldceeleldhonbafppcapldpdifcinji)
-| uBlock Origin | [link](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) | [link](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
-| AdBlock Plus | [link](https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/) | [link](https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb)
-| DuckDuckGo | [link](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/) | [link](https://chrome.google.com/webstore/detail/duckduckgo-privacy-essent/bkdgflcldnnnapblkhphbgpggdiikppg) |
+| Name          | Firefox                                                                            | Chrome                                                                                                               |
+| ------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Bitwarden     | [link](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/) | [link](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb)         |
+| LanguageTool  | [link](https://addons.mozilla.org/en-US/firefox/addon/languagetool/)               | [link](https://chrome.google.com/webstore/detail/grammar-spell-checker-%E2%80%94-l/oldceeleldhonbafppcapldpdifcinji) |
+| uBlock Origin | [link](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)              | [link](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)                     |
+| AdBlock Plus  | [link](https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/)               | [link](https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb)         |
+| DuckDuckGo    | [link](https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/)     | [link](https://chrome.google.com/webstore/detail/duckduckgo-privacy-essent/bkdgflcldnnnapblkhphbgpggdiikppg)         |
 
 ### Shell
 
@@ -104,7 +104,7 @@ make fish-shell-config
 Install Go (run **only** as sudo user):
 
 ```bash
-sudo make golang-install VERSION=1.18.2
+sudo make golang-install VERSION=1.18.3
 ```
 
 > To update/re-install Go, just run this command with needed version 😉
@@ -114,7 +114,7 @@ sudo make golang-install VERSION=1.18.2
 Install special Go tools for projects:
 
 ```bash
-sudo make golang-tools
+make golang-tools
 ```
 
 - [go-critic](https://github.com/go-critic/go-critic)
