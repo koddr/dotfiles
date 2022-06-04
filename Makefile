@@ -54,10 +54,11 @@ fedora-post-install:
 		$(RPM_FUSION_URL)-free-release-$(rpm -E %fedora).noarch.rpm \
 		$(RPM_FUSION_URL)-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-	@echo "🟢 Install system utils & packages from DNF"
+	@echo "🟢 Install system utils, media codecs & packages from DNF"
 
 	dnf install -y \
-		fish qemu virt-manager upx xclip openssl
+		fish qemu virt-manager upx mpv xclip openssl \
+		ffmpeg ffmpeg-devel		
 
 	@echo "🟢 Install Microsoft fonts from DNF"
 
